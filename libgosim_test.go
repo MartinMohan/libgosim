@@ -4,25 +4,6 @@ import (
 	"testing"
 	"time"
 )
-
-func TestPlusf(t *testing.T) {
-    want :=  1.23
-    got,_ := Plusf("1.23")
-    if got != want {
-        t.Errorf("TestPlus() =>\n\t%f, want %f", got, want)
-    }
-}
-
-func TestPlus(t *testing.T) {
-	want := 5
-	got := Plus(3,2)
-
-	if got != want {
-		t.Errorf("TestPlus() =>\n\t%d, want %d", got, want)
-	}
-
-}
-
 // Test range 0.0 - 60.0
 func TestRampx1(t *testing.T) {
 	var Amplitude float64 = -1

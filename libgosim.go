@@ -7,16 +7,6 @@ import (
 	"os"
 )
 
-func Plus(a int, b int) int {
-	return a + b
-}
-
-func Plusf(mystring string) (float64, error) {
-	fmt.Printf("In Plusf %s",mystring)
-	var valuef float64 = 1.23
-	return valuef,nil 
-}
-
 // Ramp
 func Ramp(dev string) (float64, error) {
 	now := time.Now()
