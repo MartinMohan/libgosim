@@ -1,13 +1,14 @@
-package main
+package libgosim_test
 
 import (
+    "github.com/MartinMohan/libgosim"
 	"testing"
 	"time"
 )
 // Test range 0.0 - 60.0
 func TestRampx1(t *testing.T) {
 	var Amplitude float64 = -1
-	Amplitude, err := Ramp("rampx1")
+	Amplitude, err := libgosim.Ramp("rampx1")
 
 	if err != nil {                                   
 		t.Errorf("libgosim = %d; want nil", err)
@@ -22,7 +23,7 @@ func TestRampx1(t *testing.T) {
 // Test range 0.0 - 120.0
 func TestRampx2(t *testing.T) {
 	var Amplitude float64 = -1
-	Amplitude, err := Ramp("rampx2")
+	Amplitude, err := libgosim.Ramp("rampx2")
 
 	if err != nil {                                   
 		t.Errorf("libgosim = %d; want nil", err)
@@ -36,7 +37,7 @@ func TestRampx2(t *testing.T) {
 
 // Test err
 func TestError(t *testing.T) {
-	_, err := Ramp("error")
+	_, err := libgosim.Ramp("error")
 
 	if err != nil {                                   
 		//        t.Errorf("Error returned as expected: %v", err)
@@ -51,7 +52,7 @@ func TestTimeOut(t *testing.T) {
 	go func() {
 		// do your testing
 		//		time.Sleep(5 * time.Second)
-		Ramp("timeout")
+		libgosim.Ramp("timeout")
 		done <- true
 	}()
 

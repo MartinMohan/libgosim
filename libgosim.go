@@ -1,10 +1,10 @@
-package main
+package libgosim
 
 import (
 	"time"
 	"errors"
-	"fmt"
-	"os"
+//	"fmt"
+//	"os"
 )
 
 // Ramp
@@ -32,19 +32,4 @@ func Ramp(dev string) (float64, error) {
 		return valuef, errors.New("Unknown Device")
 	}
 	return valuef, nil
-}
-
-func main() {
-	//	fmt.Printf("os.Args[0] %s len(os.Args) %d\n",os.Args[0],len(os.Args))
-	if (len(os.Args)<2){
-		fmt.Printf("Usage %s <rampx1 | rampx2 | error | timeout>\n",os.Args[0])
-		os.Exit(0)
-	}
-	for{
-		value,err := Ramp(os.Args[1])
-		if err != nil {
-			panic(err)
-		}
-		fmt.Printf("rampx1 %.6f\n",value)
-	}
 }
