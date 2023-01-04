@@ -17,6 +17,6 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		fmt.Printf("rampx1 %.6f\n",value)
+		fmt.Printf("%s %.6f\n",os.Args[1],value)
 	}
 }
