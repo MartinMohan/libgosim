@@ -1,3 +1,6 @@
+## 0.1.1 (January 04, 2023)
+ - mv gitbump.sh gitbump.sh.old
+
 ## 0.1.0 (January 04, 2023)
   - Added ErrorOFF TimeoutOFF
   - Added main function
