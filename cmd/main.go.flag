@@ -1,0 +1,56 @@
+package main
+
+import (
+	"github.com/MartinMohan/libgosim"
+	"fmt"
+	//    "os"
+	"flag"
+)
+
+func main() {
+	//	fmt.Printf("os.Args[0] %s len(os.Args) %d\n",os.Args[0],len(os.Args))
+//	var signal string
+	sigPtr := flag.String("signal", "rampx1", "<rampx1 | rampx2 | error | timeout>")
+	FixError := flag.Bool("FixError", false, "Set signal to error and Return rampx3 instead of error")
+	FixTimeout := flag.Bool("FixTimeout", false, "Set signal to timeout and Return rampx4 instead of timeout")
+	noloop := flag.Bool("noloop", false, "Do not loop result indefinetely")
+	flag.Parse()
+	//    fmt.Println("sig:", *sigPtr)
+	if *FixError {
+		*sigPtr="error"
+		fmt.Printf("FixError has been set\n")
+	}
+	if *FixTimeout {
+		*sigPtr="timeout"
+		fmt.Printf("FixTimeout has been set\n")
+	}
+	if *noloop {
+		value,err := libgosim.Ramp(*sigPtr)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Printf("%s %.6f\n",*sigPtr,value)
+		return
+	}
+	// Infinte loop
+	for{
+		value,err := libgosim.Ramp(*sigPtr)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Printf("%s %.6f\n",*sigPtr,value)
+	}
+
+	//    return
+	//    if (len(os.Args)<2){
+	//        fmt.Printf("Usage %s <rampx1 | rampx2 | error | timeout>\n",os.Args[0])
+	//        os.Exit(0)
+	//    }
+	//    for{
+	//        value,err := libgosim.Ramp(os.Args[1])
+	//        if err != nil {
+	//            panic(err)
+	//        }
+	//        fmt.Printf("%s %.6f\n",os.Args[1],value)
+	//    }
+}
